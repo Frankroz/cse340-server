@@ -1,0 +1,20 @@
+<div class="error-container">
+  <h1 class="error-title">Server Error: <%= title %></h1>
+  <p class="error-message"><%= message %></p>
+
+  <% if (title == 500) { %>
+  <p class="error-detail">
+    We apologize for the inconvenience. Our server experienced an internal
+    error. Please try reloading the page or returning to the home page.
+  </p>
+  <% } else if (title == 404) { %>
+  <p class="error-detail">
+    The page you're looking for can't be found. Please check the URL and try
+    again.
+  </p>
+  <% } %>
+
+  <a href="/" class="home-link" title="Return to the Home Page"
+    >Return to Home Page</a
+  >
+</div>

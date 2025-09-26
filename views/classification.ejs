@@ -1,0 +1,6 @@
+<h1><%= title %></h1>
+<%- grid %> <% if (grid) { %>
+<p>We found <%= grid.match(/li/g).length/2 %> vehicles in this category.</p>
+<% } else { %>
+<p>Sorry, no vehicles could be found in this category.</p>
+<% } %>
