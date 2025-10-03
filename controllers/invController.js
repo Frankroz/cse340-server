@@ -29,7 +29,7 @@ async function buildByClassificationId(req, res, next) {
     });
   } catch (error) {
     console.error("buildByClassificationId error: " + error);
-    res.status(500).render("errors/error", {
+    res.status(500).render("error-handling", {
       title: "Server Error",
       message: "Sorry, there was a problem processing your request.",
     });
