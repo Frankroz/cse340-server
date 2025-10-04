@@ -1,0 +1,28 @@
+<main id="management-view">
+  <h1><%= title %></h1>
+  <p>Manage your inventory and classifications using the links below.</p>
+
+  <% if (messages.error) { %>
+  <div class="notice notice-error"><%= messages.error %></div>
+  <% } else if (messages.success) { %>
+  <div class="notice notice-success"><%= messages.success %></div>
+  <% } %>
+
+  <div class="management-links">
+    <h2>Classification Management</h2>
+    <p>
+      <a
+        href="/inv/add-classification"
+        title="Click to add a new classification"
+        >Add New Classification</a
+      >
+    </p>
+
+    <h2>Inventory Management</h2>
+    <p>
+      <a href="/inv/add-inventory" title="Click to add a new inventory item"
+        >Add New Inventory Item</a
+      >
+    </p>
+  </div>
+</main>

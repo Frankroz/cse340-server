@@ -1,0 +1,39 @@
+<main id="add-classification-view">
+  <h1><%= title %></h1>
+  <p>All fields are required.</p>
+
+  <% if (messages.error) { %>
+  <div class="notice notice-error"><%= messages.error %></div>
+  <% } %> <% if (errors) { %>
+  <ul class="notice notice-error">
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form
+    id="addClassificationForm"
+    action="/inv/add-classification"
+    method="post"
+  >
+    <fieldset>
+      <legend>New Classification Details</legend>
+
+      <p class="form-note">Alpabetic characters only.</p>
+
+      <label for="classificationName">Classification Name:</label>
+      <input
+        type="text"
+        id="classificationName"
+        name="classification_name"
+        required
+        pattern="^[a-zA-Z]+$"
+        title="Alpabetic characters only."
+        value="<%= locals.classification_name %>"
+      />
+
+      <button type="submit">Add Classification</button>
+    </fieldset>
+  </form>
+</main>

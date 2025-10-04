@@ -391,6 +391,303 @@ h1 {
   background-color: #0056b3;
 }
 
+/****************************************
+* Add inventory
+*****************************************/
+
+.notice {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.notice-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.notice-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+#management-view {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#management-view h1 {
+  font-size: 2.2em;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+#management-view p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.management-links {
+  padding-top: 1.5rem;
+  border-top: 2px solid #e0e0e0;
+}
+
+.management-links h2 {
+  font-size: 1.3em;
+  color: #4a5568;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.management-links a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.management-links a:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#add-classification-view {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+#addClassificationForm {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+#addClassificationForm fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#addClassificationForm legend {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #edf2f7;
+  width: 100%;
+}
+
+#addClassificationForm label {
+  display: block;
+  font-weight: 500;
+  color: #2d3748;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+#addClassificationForm input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+}
+
+#addClassificationForm input[type="text"]:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  outline: none;
+}
+
+/* Helper Text Note */
+.form-note {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-top: -0.25rem;
+  margin-bottom: 1.5rem;
+  padding-left: 5px;
+}
+
+#addClassificationForm button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 2rem;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#addClassificationForm button[type="submit"]:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#addClassificationForm button[type="submit"]:active {
+  transform: scale(0.99);
+}
+
+/***********************/
+#add-inventory-view {
+  max-width: 900px;
+  padding: 1rem;
+}
+
+#add-inventory-view h1 {
+  font-size: 2em;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+#addInventoryForm fieldset {
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+#addInventoryForm legend {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #007bff;
+  padding: 0 10px;
+  margin-left: -10px;
+}
+
+#addInventoryForm label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: #555;
+}
+
+#addInventoryForm input[type="text"],
+#addInventoryForm input[type="number"],
+#addInventoryForm textarea,
+#classificationList {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#addInventoryForm input:focus,
+#addInventoryForm textarea:focus,
+#classificationList:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+#addInventoryForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#addInventoryForm button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 2rem;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+#addInventoryForm button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+#addInventoryForm button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px 30px;
+}
+
+.notice {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.notice-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  list-style: disc;
+  padding-left: 40px;
+}
+
+/* --- Validation Styles --- */
+#addInventoryForm input:not([type="submit"]):valid,
+#addInventoryForm textarea:valid {
+  border-color: #28a745;
+}
+
+#addInventoryForm input:not([type="submit"]):invalid,
+#addInventoryForm textarea:invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+}
+
+#addInventoryForm input:focus,
+#addInventoryForm textarea:focus,
+#classificationList:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+#addInventoryForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   body {
@@ -432,6 +729,27 @@ h1 {
 
   #inv-display {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  #addInventoryForm fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for pairs */
+    gap: 0 30px; /* Space between columns */
+  }
+
+  /* Overriding grid for full-width elements like description and button */
+  #invDescription,
+  #addInventoryForm textarea,
+  #invImage,
+  #invThumbnail,
+  #addInventoryForm button[type="submit"] {
+    grid-column: 1 / -1; /* Make these elements span both columns */
+  }
+
+  /* Ensure labels still appear above inputs */
+  #addInventoryForm label {
+    grid-column: auto / span 1;
+    margin-top: 0;
   }
 }
 

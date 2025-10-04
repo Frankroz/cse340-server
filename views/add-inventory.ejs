@@ -1,0 +1,121 @@
+<main id="add-inventory-view">
+  <h1><%= title %></h1>
+
+  <p>
+    All fields are required. Image paths can be to the "No Image Available"
+    default if needed.
+  </p>
+
+  <% if (messages.error) { %>
+  <div class="notice notice-error"><%= messages.error %></div>
+  <% } %> <% if (errors) { %>
+  <ul class="notice notice-error">
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+  <form id="addInventoryForm" action="/inv/add-inventory" method="post">
+    <fieldset>
+      <legend>New Inventory Item Details</legend>
+
+      <label for="classificationList">Classification:</label> <%-
+      classificationList %> <label for="invMake">Make:</label>
+      <input
+        type="text"
+        id="invMake"
+        name="inv_make"
+        placeholder="Min 3 characters"
+        required
+        minlength="3"
+        value="<%= locals.inv_make %>"
+      />
+
+      <label for="invModel">Model:</label>
+      <input
+        type="text"
+        id="invModel"
+        placeholder="Min 3 characters"
+        name="inv_model"
+        required
+        minlength="3"
+        value="<%= locals.inv_model %>"
+      />
+
+      <label for="invDescription">Description:</label>
+      <textarea id="invDescription" name="inv_description" required>
+<%= locals.inv_description %></textarea
+      >
+
+      <label for="invImage">Image Path:</label>
+      <input
+        type="text"
+        id="invImage"
+        placeholder="/images/vehicles/no-image.png"
+        name="inv_image"
+        required
+        pattern="^/images/vehicles/.*$"
+        value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+      />
+
+      <label for="invThumbnail">Thumbnail Path:</label>
+      <input
+        type="text"
+        id="invThumbnail"
+        name="inv_thumbnail"
+        placeholder="/images/vehicles/no-image-tn.png"
+        required
+        pattern="^/images/vehicles/.*$"
+        value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"
+      />
+
+      <label for="invPrice">Price (Decimal):</label>
+      <input
+        type="number"
+        id="invPrice"
+        name="inv_price"
+        placeholder="decimal or integer"
+        required
+        min="0"
+        step="0.01"
+        value="<%= locals.inv_price %>"
+      />
+
+      <label for="invYear">Year (4-digit):</label>
+      <input
+        type="number"
+        id="invYear"
+        name="inv_year"
+        required
+        placeholder="4-digit year"
+        min="1000"
+        max="9999"
+        pattern="^\d{4}$"
+        value="<%= locals.inv_year %>"
+      />
+
+      <label for="invMiles">Mileage (Integer):</label>
+      <input
+        type="number"
+        id="invMiles"
+        placeholder="digits only"
+        name="inv_miles"
+        required
+        min="0"
+        step="1"
+        value="<%= locals.inv_miles %>"
+      />
+
+      <label for="invColor">Color:</label>
+      <input
+        type="text"
+        id="invColor"
+        name="inv_color"
+        required
+        value="<%= locals.inv_color %>"
+      />
+
+      <button type="submit">Add Vehicle</button>
+    </fieldset>
+  </form>
+</main>

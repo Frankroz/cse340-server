@@ -11,6 +11,7 @@ const app = express();
 const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const expressLayouts = require("express-ejs-layouts");
+const nav = require("./utilities/").Util;
 
 /* ***********************
  * Routes
@@ -22,13 +23,19 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 
-app.get("/", function (req, res) {
-  res.render("index", { title: "Home" });
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get("/", async function (req, res) {
+  res.render("index", {
+    title: "Home",
+    nav: await nav.getNav(),
+  });
 });
 
 app.use("/", inventoryRoute);
 
-app.get("/500", (req, res, next) => {
+app.get("/500", async (req, res, next) => {
   const error = new Error("This is a simulated 500 server error for testing.");
   error.status = 500;
   next(error);
@@ -50,6 +57,7 @@ app.use(async (err, req, res, next) => {
 
   res.status(status).render("error-handling", {
     title: status,
+    nav: await nav.getNav(),
     message: message,
   });
 });
