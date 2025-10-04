@@ -71,7 +71,7 @@ async function buildByInvId(req, res, next) {
 async function buildClassificationList(data) {
   let grid = "";
 
-  if (!data) {
+  if (data) {
     grid = '<ul id="inv-display">';
     data.forEach((vehicle) => {
       grid += `
@@ -101,7 +101,7 @@ async function buildClassificationList(data) {
     });
     grid += "</ul>";
   }
-  
+
   return grid;
 }
 
