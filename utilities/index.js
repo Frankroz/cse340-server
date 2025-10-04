@@ -69,8 +69,9 @@ async function buildByInvId(req, res, next) {
  * Build grid view
  * ************************** */
 async function buildClassificationList(data) {
-  let grid;
-  if (data.length > 0) {
+  let grid = "";
+
+  if (!data) {
     grid = '<ul id="inv-display">';
     data.forEach((vehicle) => {
       grid += `
@@ -99,9 +100,8 @@ async function buildClassificationList(data) {
       </li>`;
     });
     grid += "</ul>";
-  } else {
-    grid += '<p class="notice">Sorry, no vehicles could be found.</p>';
   }
+  
   return grid;
 }
 
@@ -142,7 +142,7 @@ Util.getNav = async function () {
     });
 
     list += "</ul>";
-    
+
     return list;
   } catch (error) {
     console.error("Error in getNav:", error);

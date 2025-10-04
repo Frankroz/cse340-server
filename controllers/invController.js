@@ -6,6 +6,8 @@ async function buildByInvId(req, res, next) {
   const inv_id = req.params.inv_id;
   const invData = await invModel.getVehicleByInvId(inv_id);
 
+  console.log(invData);
+
   if (!invData || invData.length === 0) {
     return next({
       status: 404,
@@ -26,11 +28,13 @@ async function buildByInvId(req, res, next) {
 const getClassName = (classification_id, classifications) => {
   let className = "";
 
-  classifications.forEach((classification) => {
-    if (classification.classification_id === parseInt(classification_id)) {
-      className = classification.classification_name;
-    }
-  });
+  if (classifications) {
+    classifications.forEach((classification) => {
+      if (classification.classification_id === parseInt(classification_id)) {
+        className = classification.classification_name;
+      }
+    });
+  }
 
   return className;
 };
@@ -45,11 +49,20 @@ async function buildByClassificationId(req, res, next) {
 
     const grid = await utilities.buildClassificationList(data);
     const className = getClassName(classification_id, classifications.rows);
-    res.render("classification", {
-      title: className + " vehicles",
-      nav: await nav.getNav(),
-      grid,
-    });
+
+    if (grid.length) {
+      res.render("classification", {
+        title: className + " vehicles",
+        nav: await nav.getNav(),
+        grid,
+      });
+    } else {
+      res.status(404).render("error-handling", {
+        title: "Classification Not Found",
+        nav: await nav.getNav(),
+        message: "Sorry, there was a problem processing your request.",
+      });
+    }
   } catch (error) {
     console.error("buildByClassificationId error: " + error);
     res.status(500).render("error-handling", {
