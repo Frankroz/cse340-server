@@ -6,6 +6,16 @@
     </a>
   </div>
   <div class="site-header-content">
-    <span><a href="/login" title="Login to My Account">My Account</a></span>
+    <% if (locals.loggedin) { %>
+    <a href="/account" title="Account Management" id="welcome-link"
+      >Welcome <%= locals.accountData.account_firstname %></a
+    >
+
+    <a href="/account/logout" title="Log out" id="logout-link">Logout</a>
+    <% } else { %>
+    <a href="/account/login" title="Account Management" id="my-account-link"
+      >My Account</a
+    >
+    <% } %>
   </div>
 </header>

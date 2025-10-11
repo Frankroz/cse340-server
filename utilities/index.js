@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model");
+const accountModel = require("../models/accountModel");
+const jwt = require("jsonwebtoken");
 
 /* ***************************
  * Build vehicle detail HTML
@@ -170,6 +172,63 @@ Util.buildClassificationList = async function (classification_id = null) {
   });
   classificationList += "</select>";
   return classificationList;
+};
+
+Util.checkJWT = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash(
+            "notice",
+            "Your login session expired. Please log in again."
+          );
+          res.clearCookie("jwt");
+          res.locals.loggedin = 0;
+          return res.redirect("/account/login");
+        }
+
+        res.locals.accountData = accountData;
+        res.locals.loggedin = 1;
+        next();
+      }
+    );
+  } else {
+    res.locals.loggedin = 0;
+    next();
+  }
+};
+
+Util.checkExistingEmail = async (account_email) => {
+  try {
+    const account = await accountModel.getAccountByEmail(account_email);
+    return account ? account.rowCount > 0 : false;
+  } catch (error) {
+    console.error("Error checking existing email:", error);
+    return false;
+  }
+};
+
+Util.buildToken = function (accountData) {
+  try {
+    const token = jwt.sign(
+      {
+        account_id: accountData.account_id,
+        account_type: accountData.account_type,
+        account_firstname: accountData.account_firstname,
+        account_lastname: accountData.account_lastname,
+        account_email: accountData.account_email,
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: 3600 * 5 }
+    );
+    return token;
+  } catch (error) {
+    console.error("Error building token:", error);
+    return null;
+  }
 };
 
 module.exports = {

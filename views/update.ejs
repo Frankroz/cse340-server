@@ -1,0 +1,111 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { %>
+<h1>Account Update</h1>
+<% } %> 
+
+<% if (messages.notice) { %>
+<div class="notice notice-error"><%= messages.notice %></div>
+<% } %> <% if (errors) { %>
+<ul class="notice notice-error">
+  <% errors.forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<div class="forms-container">
+  <section class="update-form mt-6 p-4 border rounded shadow bg-white">
+    <h2>Account Update</h2>
+    <form action="/account/update" method="post" id="account-update-form">
+      <fieldset>
+        <legend>Update Personal Information</legend>
+
+        <label for="accountFirstname">First Name:</label>
+        <input
+          type="text"
+          id="accountFirstname"
+          name="account_firstname"
+          required
+          value="<%= locals.accountData.account_firstname %>"
+          pattern="[A-Za-z]{1,}"
+          title="Name should only contain letters and be at least 1 character."
+          <% if (locals.account_firstname) { %>
+          value="<%= locals.account_firstname %>" <% } %> >
+
+        <label for="accountLastname">Last Name:</label>
+        <input
+          type="text"
+          id="accountLastname"
+          name="account_lastname"
+          required
+          value="<%= locals.accountData.account_lastname %>"
+          pattern="[A-Za-z]{1,}"
+          title="Name should only contain letters and be at least 1 character."
+          <% if (locals.account_lastname) { %>
+          value="<%= locals.account_lastname %>" <% } %> >
+
+        <label for="accountEmail">Email Address:</label>
+        <input
+          type="email"
+          id="accountEmail"
+          name="account_email"
+          required
+          value="<%= locals.accountData.account_email %>"
+          <% if (locals.account_email) { %>
+          value="<%= locals.account_email %>" <% } %> >
+      </fieldset>
+
+      <input
+        type="hidden"
+        name="account_id"
+        value="<%= locals.accountData.account_id %>"
+      />
+
+      <button type="submit" class="submit-button">Update Account</button>
+    </form>
+  </section>
+
+  <section class="password-form mt-8 p-4 border rounded shadow bg-white">
+    <h2>Change Password</h2>
+    <p class="notice">
+      **Warning:** Submitting this form will permanently change your password.
+      Password must be at least 12 characters and contain at least 1 capital
+      letter, 1 number, and 1 special character.
+    </p>
+
+    <form
+      action="/account/change-password"
+      method="post"
+      id="password-change-form"
+    >
+      <fieldset>
+        <legend>Enter New Password</legend>
+
+        <label for="accountPassword">New Password:</label>
+        <input
+          type="password"
+          id="accountPassword"
+          name="account_password"
+          required
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+          title="Password must meet all requirements."
+        />
+      </fieldset>
+
+      <input
+        type="hidden"
+        name="account_id"
+        value="<%= locals.accountData.account_id %>"
+      />
+
+      <button type="submit" class="submit-button">Change Password</button>
+    </form>
+  </section>
+</div>

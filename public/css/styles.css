@@ -421,9 +421,6 @@ h1 {
   max-width: 600px;
   margin: 2rem auto;
   padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #management-view h1 {
@@ -688,6 +685,324 @@ h1 {
   min-height: 100px;
 }
 
+/* -------------------------------------------------------------------------- */
+/* Account Management View Styles */
+/* -------------------------------------------------------------------------- */
+#account-management-view {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+#account-management-view h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #0056b3;
+  margin-bottom: 1.5rem;
+}
+
+#account-management-view h2 {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* Primary Action Link */
+#account-management-view > a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+#account-management-view > a:hover {
+  background-color: #45a049;
+}
+
+/* Inventory Management Section */
+#account-management-view h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 5px;
+}
+
+#account-management-view p a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#account-management-view p a:hover {
+  text-decoration: underline;
+}
+
+/* Account Details Card */
+.account-details {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #f9f9f9;
+}
+
+.account-details h3 {
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #333;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.account-details p {
+  margin-bottom: 0.5rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.account-details strong {
+  color: #333;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Account Login/Registration Views Styles                                    */
+/* -------------------------------------------------------------------------- */
+#login-view,
+#register-view {
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+#login-view h1,
+#register-view h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.2em;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+#loginForm fieldset,
+#registrationForm fieldset {
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+#loginForm legend,
+#registrationForm legend {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff;
+  padding: 0 10px;
+}
+
+/* Label and Input General Styles */
+#loginForm label,
+#registrationForm label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+#loginForm input,
+#registrationForm input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#loginForm input:focus,
+#registrationForm input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Password Note for requirements */
+.password-note {
+  font-size: 0.85em;
+  color: #777;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 5px;
+}
+
+/* Submit Button */
+#loginForm button,
+#registrationForm button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1.5rem;
+}
+
+#loginForm button:hover,
+#registrationForm button:hover {
+  background-color: #45a049;
+}
+
+/* Link to Registration/Login */
+.account-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.account-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.account-link a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Account Update View Styles */
+/* -------------------------------------------------------------------------- */
+#account-update-view {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
+}
+
+#account-update-view h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #0056b3;
+  margin-bottom: 1.5rem;
+}
+
+/* Container for the two side-by-side forms */
+.forms-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Styling for both the update-form and password-form sections */
+.update-form,
+.password-form {
+  flex: 1 1 45%;
+  min-width: 300px;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+
+.update-form h2,
+.password-form h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Fieldset and Legend Styles */
+.update-form fieldset,
+.password-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.update-form legend,
+.password-form legend {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.update-form label,
+.password-form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.update-form input[type="text"],
+.update-form input[type="email"],
+.password-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+/* Warning/Notice in Password Section */
+.password-form .notice {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9em;
+}
+
+/* Submit Buttons */
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   body {
@@ -750,6 +1065,15 @@ h1 {
   #addInventoryForm label {
     grid-column: auto / span 1;
     margin-top: 0;
+  }
+
+  .forms-container {
+    flex-direction: column;
+  }
+  .update-form,
+  .password-form {
+    flex: 1 1 100%;
+    margin-bottom: 1rem;
   }
 }
 

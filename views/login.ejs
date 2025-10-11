@@ -1,0 +1,51 @@
+<main id="login-view">
+  <h1><%= title %></h1>
+
+  <% if (messages.notice) { %>
+  <div class="notice notice-error"><%= messages.notice %></div>
+  <% } %> <% if (errors) { %>
+  <ul class="notice notice-error">
+    <% errors.forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form id="loginForm" action="/account/login" method="post">
+    <fieldset>
+      <legend>Login Credentials</legend>
+
+      <label for="accountEmail">Email:</label>
+      <input
+        type="email"
+        id="accountEmail"
+        name="account_email"
+        placeholder="Enter a valid email"
+        required
+        value="<%= locals.account_email %>"
+      />
+
+      <label for="accountPassword">Password:</label>
+      <input
+        type="password"
+        id="accountPassword"
+        name="account_password"
+        required
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      />
+
+      <p class="password-note">
+        Password must be at least 12 characters and contain at least 1 capital
+        letter, 1 number, and 1 special character.
+      </p>
+
+      <button type="submit">Login</button>
+    </fieldset>
+  </form>
+
+  <div class="account-link">
+    <a href="/account/register" title="Click to register a new account"
+      >No account? Sign up here.</a
+    >
+  </div>
+</main>
