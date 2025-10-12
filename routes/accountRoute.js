@@ -4,7 +4,11 @@ const accountController = require("../controllers/accountController");
 const util = require("../utilities/").Util;
 const regValidate = require("./validationMiddleware");
 
-router.get("/login", util.handleErrors(accountController.buildLogin));
+router.get(
+  "/login",
+  util.checkJWT,
+  util.handleErrors(accountController.buildLogin)
+);
 
 // Route to process the login attempt
 router.post(

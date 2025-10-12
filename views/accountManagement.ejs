@@ -37,6 +37,64 @@ locals.accountData.account_type === "Admin") { %>
   </div>
 </section>
 
+<% if (locals.userComments && locals.userComments.length > 0) { %>
+<section class="user-comments mt-6 p-4 border rounded shadow">
+  <h3 class="text-xl font-bold mb-4">
+    Your Published Comments (<%= locals.userComments.length %>)
+  </h3>
+  <table class="comments-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Vehicle</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% locals.userComments.forEach(comment => { %>
+      <tr>
+        <td class="comment-date-cell">
+          <%= new Date(comment.comment_date).toLocaleDateString('en-US', { year:
+          'numeric', month: 'short', day: 'numeric' }) %>
+        </td>
+        <td class="comment-text-cell">
+          <%= comment.comment_text.substring(0, 50) %>...
+        </td>
+        <td class="comment-vehicle-cell">
+          <a
+            href="/inv/detail/<%= comment.inv_id %>"
+            title="View <%= comment.inv_make %> <%= comment.inv_model %>"
+          >
+            <%= comment.inv_make %> <%= comment.inv_model %>
+          </a>
+        </td>
+        <td class="comment-actions-cell">
+          <a
+            href="/comment/edit/<%= comment.comment_id %>"
+            title="Edit this comment"
+            class="action-button edit-button"
+            >Edit</a
+          >
+          <a
+            href="/comment/delete/<%= comment.comment_id %>"
+            title="Delete this comment"
+            class="action-button delete-button"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<% } else { %>
+<section class="user-comments mt-6 p-4 border rounded shadow">
+  <h3 class="text-xl font-bold mb-2">Your Published Comments</h3>
+  <p>You have not published any comments yet.</p>
+</section>
+<% } %>
+
 <% } else { %>
 <p>Account data is unavailable.</p>
 <% } %>

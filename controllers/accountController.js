@@ -1,11 +1,20 @@
 const utilities = require("../utilities/").Util;
 const accountModel = require("../models/accountModel");
+const commentModel = require("../models/commentModel");
 const bcrypt = require("bcryptjs");
 
 /* ****************************************
  * Deliver login view
  * *************************************** */
 async function buildLogin(req, res, next) {
+  if (res.locals.loggedin) {
+    req.flash(
+      "notice",
+      "Please log in to access your account management page."
+    );
+    return res.redirect("/account/");
+  }
+
   let nav = await utilities.getNav();
   res.render("login", {
     title: "Login",
@@ -145,6 +154,10 @@ async function buildAccountManagement(req, res, next) {
     return res.redirect("/account/login");
   }
 
+  res.locals.userComments = await commentModel.getUserCommentsByAccountId(
+    res.locals.accountData.account_id
+  );
+
   let nav = await utilities.getNav();
 
   res.render("accountManagement", {
@@ -152,6 +165,7 @@ async function buildAccountManagement(req, res, next) {
     nav,
     errors: null,
     message: "",
+    userComments: res.locals.userComments,
   });
 }
 

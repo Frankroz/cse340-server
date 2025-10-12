@@ -11,6 +11,8 @@ const expressLayouts = require("express-ejs-layouts");
 const staticRoute = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
+const commentRoute = require("./routes/commentRoute");
+const commentModel = require("./models/commentModel");
 const cookieParser = require("cookie-parser");
 const utilities = require("./utilities/").Util;
 
@@ -59,10 +61,12 @@ app.get("/500", async (req, res, next) => {
 });
 
 // Main Index Route
-app.get("/", async function (req, res) {
+app.get("/", utilities.checkJWT, async function (req, res) {
+  const comments = await commentModel.getCommentsByInventoryId(21);
   res.render("index", {
     title: "Home",
     nav: await utilities.getNav(),
+    comments,
   });
 });
 
@@ -71,6 +75,9 @@ app.use("/", inventoryRoute);
 
 // Account Routes
 app.use("/account", accountRoute);
+
+// Comment Routes
+app.use("/comment", commentRoute);
 
 /* ***********************
  * 404

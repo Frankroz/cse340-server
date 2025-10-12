@@ -777,6 +777,111 @@ h1 {
   color: #333;
 }
 
+/*
+  Styles for the User Comments Table on the Account Management page.
+*/
+
+.user-comments {
+  width: 100%;
+  max-width: 1000px;
+  margin: 1.5rem auto;
+}
+
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Table Header Styles */
+.comments-table thead th {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  padding: 1rem 0.75rem;
+  text-align: left;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Table Body Cell Styles */
+.comments-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.comments-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.comments-table tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+/* Column Specific Styling and Widths */
+.comments-table .comment-date-cell {
+  width: 15%;
+  white-space: nowrap;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.comments-table .comment-text-cell {
+  width: 40%;
+  font-style: italic;
+  color: #374151;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.comments-table .comment-vehicle-cell {
+  width: 25%;
+}
+
+.comments-table .comment-actions-cell {
+  width: 20%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Action Button Styles */
+.action-button {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  font-size: 0.85rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.edit-button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #2563eb;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3),
+    0 2px 4px -2px rgba(59, 130, 246, 0.3);
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3),
+    0 2px 4px -2px rgba(239, 68, 68, 0.3);
+}
+
 /* -------------------------------------------------------------------------- */
 /* Account Login/Registration Views Styles                                    */
 /* -------------------------------------------------------------------------- */
@@ -1003,6 +1108,237 @@ h1 {
   background-color: #0056b3;
 }
 
+#comment-section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.comment-section-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
+
+/* --- Comment Form Styling --- */
+
+#comment-form-container {
+  padding: 1.5rem;
+  margin-bottom: 20px;
+}
+
+#comment-form-container h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#comment-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.comment-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.comment-button:hover {
+  background-color: #0056b3;
+}
+
+/* --- Existing Comments List --- */
+
+#comments-list h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.comment-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-body {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.comment-meta {
+  font-size: 0.85em;
+  color: #777;
+  margin-top: 5px;
+}
+
+.comment-date {
+  font-family: monospace;
+}
+
+.no-comments-message {
+  font-style: italic;
+  color: #777;
+  padding: 10px 0;
+}
+
+/* --- Notice/Info Message --- */
+
+.notice {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.notice-info {
+  background-color: #e9f7fe;
+  border: 1px solid #c2e6ff;
+  color: #007bff;
+}
+
+.notice-info a {
+  font-weight: bold;
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Styles for the Edit Comment View */
+
+/* --- Container Styles --- */
+#edit-comment-container {
+  max-width: 600px;
+  margin: 1.5rem auto 2rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.06); /* shadow */
+  background-color: #ffffff;
+}
+
+/* --- Header Styles --- */
+#edit-comment-container h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+
+/* --- Form and Fieldset --- */
+#edit-comment-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* --- Label Styles --- */
+#edit-comment-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* --- Textarea Styles --- */
+#comment_text {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Textarea Focus/Ring styles */
+#comment_text:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* --- Form Actions and Buttons --- */
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-actions button,
+.form-actions a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.15s ease;
+}
+
+/* Save Changes Button (Blue) */
+.form-actions button[type="submit"] {
+  background-color: #2563eb;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.form-actions a {
+  margin-left: 0.75rem;
+  background-color: #d1d5db;
+  color: #1f2937;
+}
+
+.form-actions a:hover {
+  background-color: #9ca3af;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   body {
@@ -1074,6 +1410,55 @@ h1 {
   .password-form {
     flex: 1 1 100%;
     margin-bottom: 1rem;
+  }
+
+  #comment-form-container {
+    padding: 0.3rem;
+  }
+
+  .comments-table {
+    border: 0;
+  }
+
+  .comments-table thead {
+    display: none;
+  }
+
+  .comments-table tbody tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .comments-table tbody td {
+    display: block;
+    text-align: right;
+    border-bottom: 1px dashed #ccc;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .comments-table tbody td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.75rem;
+    width: 45%;
+    text-align: left;
+    font-weight: 700;
+    color: #374151;
+  }
+
+  .comments-table .comment-actions-cell {
+    border-bottom: none;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .comments-table .action-button {
+    margin: 0 0.5rem;
   }
 }
 

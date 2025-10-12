@@ -114,9 +114,43 @@ const validateInventory = async (req, res, next) => {
   });
 };
 
+const commentRules = () => {
+  return [
+    body("comment_text")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a comment."),
+  ];
+};
+
+const validateComment = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    return next();
+  }
+  const inv_id = parseInt(req.body.inv_id);
+  const invData = await invModel.getVehicleByInvId(inv_id);
+  const comments = await utilities.getCommentsByInventoryId(inv_id);
+  const vehicleDetail = await utilities.buildVehicleDetail(invData);
+  const vehicleMake = invData[0].inv_make;
+  const vehicleModel = invData[0].inv_model;
+  let nav = await utilities.Util.getNav();
+
+  res.render("vehicle-detail", {
+    title: vehicleMake + " " + vehicleModel,
+    nav,
+    vehicleDetail,
+    invData: invData[0],
+    comments: comments,
+    errors: errors.array(),
+  });
+};
+
 module.exports = {
   classificationRules,
   validateClassification,
   invRules,
   validateInventory,
+  commentRules,
+  validateComment,
 };

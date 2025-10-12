@@ -1,0 +1,60 @@
+<h1><%= title %></h1>
+
+<% if (messages.error) { %>
+<div class="notice notice-error"><%= messages.error %></div>
+<% } %> <% if (errors) { %>
+<ul class="notice notice-error">
+  <% errors.forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<p>
+  You are editing your comment posted on <%= new
+  Date(commentData.comment_date).toLocaleDateString('en-US') %>.
+</p>
+
+<div id="edit-comment-container" class="mt-6 p-4 border rounded shadow">
+  <h3 class="text-xl font-bold mb-3">Modify Your Review</h3>
+
+  <form action="/comment/update" method="POST" id="edit-comment-form">
+    <fieldset>
+      <label for="comment_text" class="block mb-1 font-medium"
+        >Your Updated Review:</label
+      >
+      <textarea
+        id="comment_text"
+        name="comment_text"
+        rows="6"
+        placeholder="Enter your updated comment here (required)"
+        required
+        class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+<%= commentData.comment_text %></textarea
+      >
+
+      <input
+        type="hidden"
+        name="comment_id"
+        value="<%= commentData.comment_id %>"
+      />
+
+      <div class="form-actions mt-4">
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition duration-150"
+        >
+          Save Changes
+        </button>
+        <a
+          href="/account"
+          title="Cancel and return to account management"
+          class="px-4 py-2 ml-3 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition duration-150"
+        >
+          Cancel
+        </a>
+      </div>
+    </fieldset>
+  </form>
+</div>

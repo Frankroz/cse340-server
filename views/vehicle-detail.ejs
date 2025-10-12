@@ -1,2 +1,62 @@
 <h1><%= title %></h1>
 <%- vehicleDetail %>
+
+<section id="comment-section">
+  <h2 class="comment-section-header">Customer Reviews and Comments</h2>
+
+  <% if (locals.loggedin) { %>
+  <div id="comment-form-container">
+    <h3>Add Your Comment</h3>
+
+    <form action="/inv/comment/add" method="POST" id="comment-form">
+      <fieldset>
+        <label for="comment_text" class="comment-label">Your Review:</label>
+        <textarea
+          id="comment_text"
+          name="comment_text"
+          rows="4"
+          placeholder="Share your thoughts on this vehicle"
+          required
+          class="comment-textarea"
+        >
+<%= locals.comment_text || '' %></textarea
+        >
+
+        <input type="hidden" name="inv_id" value="<%= invData.inv_id %>" />
+
+        <button type="submit" class="comment-button">Post Comment</button>
+      </fieldset>
+    </form>
+  </div>
+  <% } else { %>
+  <p class="notice notice-info">
+    <a href="/account/login">Log in</a> to post a review or comment on this
+    vehicle.
+  </p>
+  <% } %>
+
+  <div id="comments-list">
+    <% if (comments && comments.length > 0) { %>
+    <h3 class="comments-total-count">
+      Total Comments (<%= comments.length %>)
+    </h3>
+    <% comments.forEach(comment => { %>
+    <div class="comment-item">
+      <p class="comment-body">"<%= comment.comment_text %>"</p>
+      <p class="comment-meta">
+        — Posted by **<%= comment.account_firstname %> <%=
+        comment.account_lastname.charAt(0) %>. ** on
+        <span class="comment-date">
+          <%= new Date(comment.comment_date).toLocaleDateString('en-US', { year:
+          'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:
+          '2-digit' }) %>
+        </span>
+      </p>
+    </div>
+    <% }) %> <% } else { %>
+    <p class="no-comments-message">
+      Be the first to leave a comment for this vehicle!
+    </p>
+    <% } %>
+  </div>
+</section>
