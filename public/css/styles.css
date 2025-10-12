@@ -31,6 +31,13 @@ body {
   font-weight: bold;
   font-size: 24px;
   color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.site-logo a img {
+  height: 50px;
+  margin-right: 10px;
 }
 
 .site-header-content a {
