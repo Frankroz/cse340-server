@@ -44,7 +44,7 @@ async function buildByClassificationId(req, res, next) {
     const classification_id = req.params.classificationId;
     let classifications = await invModel.getClassifications();
     const data = await invModel.getInventoryByClassificationId(
-      classification_id
+      classification_id, req.query.sort
     );
 
     const grid = await utilities.buildClassificationList(data);

@@ -13,13 +13,44 @@ async function getVehicleByInvId(inv_id) {
   }
 }
 
-async function getInventoryByClassificationId(classification_id) {
+async function getInventoryByClassificationId(classification_id, sort_method) {
   try {
-    const data = await pool.query(
-      `SELECT * FROM inventory 
-        WHERE classification_id = $1`,
-      [classification_id]
-    );
+    const sortMethods = Array.isArray(sort_method)
+      ? sort_method
+      : sort_method
+      ? [sort_method]
+      : [];
+
+    let orderByClauses = [];
+
+    sortMethods.forEach((method) => {
+      switch (method) {
+        case "price_asc":
+          orderByClauses.push("inv_price ASC");
+          break;
+        case "price_desc":
+          orderByClauses.push("inv_price DESC");
+          break;
+        case "name_asc":
+          orderByClauses.push("inv_make ASC, inv_model ASC");
+          break;
+        case "name_desc":
+          orderByClauses.push("inv_make DESC, inv_model DESC");
+          break;
+      }
+    });
+
+    let orderByString = "";
+    if (orderByClauses.length > 0) {
+      orderByString = `ORDER BY ${orderByClauses.join(", ")}`;
+    } else {
+      orderByString = "ORDER BY inv_make ASC, inv_model ASC";
+    }
+
+    const sql = `SELECT * FROM inventory WHERE classification_id = $1 ${orderByString}`;
+
+    const data = await pool.query(sql, [classification_id]);
+
     return data.rows;
   } catch (error) {
     console.error("getInventoryByClassificationId error: " + error);
@@ -102,5 +133,5 @@ module.exports = {
   checkExistingClassification,
   addClassification,
   addInventory,
-  getClassifications
+  getClassifications,
 };

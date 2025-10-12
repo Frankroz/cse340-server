@@ -1,6 +1,35 @@
-<h1><%= title %></h1>
-<%- grid %> <% if (grid) { %>
-<p>We found <%= grid.match(/li/g).length/2 %> vehicles in this category.</p>
-<% } else { %>
-<p>Sorry, no vehicles could be found in this category.</p>
-<% } %>
+<main id="classification-view">
+  <h1><%= title %></h1>
+  
+  <% if (grid) { %>
+  <!-- Sorting Controls -->
+  <div class="sort-controls">
+    <form id="sort-form" method="GET">
+      <label for="sort-select">Sort By:</label>
+      
+      <!-- Price Sort Select -->
+      <select id="sort-select" name="sort" onchange="this.form.submit()">
+        <option value="">-- Option --</option>
+        <option value="price_asc" 
+            <% if (locals.sort === 'price_asc') { %> selected <% } %>>Price (Low to High)
+        </option>
+        <option value="price_desc"
+            <% if (locals.sort === 'price_desc') { %> selected <% } %>>Price (High to Low)
+        </option>
+        <option value="name_asc"
+            <% if (locals.sort === 'name_asc') { %> selected <% } %>>Name (A-Z)
+        </option>
+        <option value="name_desc"
+            <% if (locals.sort === 'name_desc') { %> selected <% } %>>Name (Z-A)
+        </option>
+      </select>  
+    </form>
+  </div>
+  
+  <%- grid %>
+  <p>We found <%= grid.match(/li/g).length/2 %> vehicles in this category.</p>
+  <% } else { %>
+  <p>Sorry, no vehicles could be found in this category.</p>
+  <% } %>
+
+</main>

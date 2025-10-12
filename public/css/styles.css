@@ -267,6 +267,44 @@ h2 {
   margin-top: 0.25rem;
 }
 
+/* Basic, self-contained CSS for the sort control */
+.sort-controls {
+  margin: 1.5rem 0 1rem 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+#sort-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+#sort-select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+  transition: border-color 0.2s;
+}
+
+#sort-select:hover,
+#sort-select:focus {
+  border-color: #0056b3;
+}
+
 /* Vehicle details */
 h1 {
   font-size: 2.5rem;
